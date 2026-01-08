@@ -51,7 +51,8 @@
         }
 
         .btn {
-            background-color: #ff6347;
+            background-color: #ff6347;    
+            transition: background-color 0.3s ease, transform 0.2s ease;
             color: white;
             padding: 10px 20px;
             font-size: 1.2em;
@@ -114,20 +115,26 @@
 
         // Function to display a random joke
         function getRandomJoke() {
-            const randomIndex = Math.floor(Math.random() * jokes.length);
-            jokeText.textContent = jokes[randomIndex];
+    const randomIndex = Math.floor(Math.random() * jokes.length);
+    jokeText.textContent = jokes[randomIndex];
 
-            // Add animation class to joke text
-            jokeText.classList.add("joke-animate");
+    jokeText.classList.add("joke-animate");
 
-            // Remove the animation class after it's done
-            setTimeout(() => {
-                jokeText.classList.remove("joke-animate");
-            }, 1000);
-        }
+    jokeButton.style.backgroundColor = randomColor();
+
+    setTimeout(() => {
+        jokeText.classList.remove("joke-animate");
+    }, 1000);
+}
+
 
         // Event listener for button click
         jokeButton.addEventListener("click", getRandomJoke);
+        function randomColor() {
+    const colors = ['#ff6347', '#4CAF50', '#2196F3', '#9C27B0', '#FF9800'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
     </script>
 </body>
 </html>
